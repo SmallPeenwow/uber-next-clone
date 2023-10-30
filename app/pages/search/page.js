@@ -44,7 +44,7 @@ const Search = () => {
 export default Search;
 
 const Wrapper = tw.div`
-	bg-gray-200 h-screen
+	bg-gray-200 h-screen flex flex-col
 `;
 
 const ButtonContainer = tw.div`
@@ -52,7 +52,7 @@ const ButtonContainer = tw.div`
 `;
 
 const BackButton = tw.img`
-	h-12 w-12 hover:border-blue-300 hover:border rounded-full
+	h-12 w-12 cursor-pointer hover:border-blue-300 hover:border rounded-full
 `;
 
 const InputContainer = tw.div`
@@ -96,5 +96,5 @@ const StarIcon = tw.img`
 `;
 
 const ConfirmButton = tw.button`
-	py-1 bg-black text-white mt-2 mx-2
+	bg-black text-white text-center mt-2 mx-4 px-4 py-3 text-2xl cursor-pointer hover:scale-95 transition
 `;
