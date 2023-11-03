@@ -1,10 +1,13 @@
 'use client';
 
 import Map from '@/components/Map';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 const Confirm = () => {
+	const [pickupCoordinates, setPickupCoordinates] = useState();
+	const [dropOffCoordinates, setDropOffCoordinates] = useState();
+
 	const getPickupCoordinates = () => {
 		const pickup = 'Santa Monica';
 
@@ -14,7 +17,7 @@ const Confirm = () => {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data.features[0].center);
+				setPickupCoordinates(data.features[0].center);
 			});
 	};
 
@@ -27,8 +30,7 @@ const Confirm = () => {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('DropOff');
-				console.log(data.features[0].center);
+				setDropOffCoordinates(data.features[0].center);
 			});
 	};
 
@@ -39,9 +41,11 @@ const Confirm = () => {
 
 	return (
 		<Wrapper>
-			<Map />
+			<Map pickupCoordinates={pickupCoordinates} dropOffCoordinates={dropOffCoordinates} />
 
-			<RideContainer>Ride Selector Confirm Button</RideContainer>
+			<RideContainer>
+				Ride Selector Confirm Button {pickupCoordinates} {dropOffCoordinates}
+			</RideContainer>
 		</Wrapper>
 	);
 };
