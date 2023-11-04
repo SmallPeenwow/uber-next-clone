@@ -1,7 +1,13 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 const Search = () => {
+	const [pickup, setPickup] = useState('');
+	const [dropOff, setDropOff] = useState('');
+
 	return (
 		<Wrapper>
 			{/* Button Container */}
@@ -22,8 +28,16 @@ const Search = () => {
 				</FromToIcons>
 
 				<InputBoxes>
-					<Input placeholder='Enter pickup location' />
-					<Input placeholder='Where to?' />
+					<Input
+						placeholder='Enter pickup location'
+						value={pickup}
+						onChange={(e) => setPickup(e.target.value)}
+					/>
+					<Input
+						placeholder='Where to?'
+						value={dropOff}
+						onChange={(e) => setDropOff(e.target.value)}
+					/>
 				</InputBoxes>
 
 				<PlusIcon src='https://img.icons8.com/ios/50/000000/plus-math.png' />
@@ -36,7 +50,18 @@ const Search = () => {
 			</SavedPlaces>
 
 			{/* Confirm Location */}
-			<ConfirmButton>Confirm Locations</ConfirmButton>
+			<Link
+				href={{
+					pathname: '/pages/confirm',
+					query: {
+						pickup: pickup,
+						dropOff: dropOff,
+					},
+				}}
+				className='flex'
+			>
+				<ConfirmButton>Confirm Locations</ConfirmButton>
+			</Link>
 		</Wrapper>
 	);
 };
@@ -96,5 +121,5 @@ const StarIcon = tw.img`
 `;
 
 const ConfirmButton = tw.button`
-	bg-black text-white text-center mt-2 mx-4 px-4 py-3 text-2xl cursor-pointer hover:scale-95 transition
+	bg-black flex-1 text-white text-center mt-2 mx-4 px-4 py-3 text-2xl cursor-pointer hover:scale-95 transition
 `;
