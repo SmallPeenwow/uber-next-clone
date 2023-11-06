@@ -73,11 +73,11 @@ const Wrapper = tw.div`
 `;
 
 const ButtonContainer = tw.div`
-	bg-white px-4 mt-1
+	bg-white px-4
 `;
 
 const BackButton = tw.img`
-	h-12 w-12 cursor-pointer hover:border-blue-300 hover:border rounded-full
+	h-10 w-10 mt-2 cursor-pointer hover:border-blue-300 hover:border rounded-full
 `;
 
 const InputContainer = tw.div`
