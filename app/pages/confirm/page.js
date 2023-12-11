@@ -10,8 +10,8 @@ import Link from 'next/link';
 const Confirm = () => {
 	const searchParams = useSearchParams();
 
-	const [pickupCoordinates, setPickupCoordinates] = useState();
-	const [dropOffCoordinates, setDropOffCoordinates] = useState();
+	const [pickupCoordinates, setPickupCoordinates] = useState([0, 0]);
+	const [dropOffCoordinates, setDropOffCoordinates] = useState([0, 0]);
 
 	const getPickupCoordinates = (pickup) => {
 		fetch(
@@ -53,7 +53,10 @@ const Confirm = () => {
 			<Map pickupCoordinates={pickupCoordinates} dropOffCoordinates={dropOffCoordinates} />
 
 			<RideContainer>
-				<RideSelector />
+				<RideSelector
+					pickUpCoordinates={pickupCoordinates}
+					dropOffCoordinates={dropOffCoordinates}
+				/>
 
 				<ConfirmButtonContainer>
 					<ConfirmButton>Confirm UberX</ConfirmButton>
